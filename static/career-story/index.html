@@ -171,6 +171,14 @@
                 #fd5c79 62.83%,
                 #6d45ce 92.91%
             );
+            background-size: 100% 220%;
+            box-shadow: 0 0 18px rgba(98, 224, 255, 0.75), 0 0 34px rgba(109, 69, 206, 0.45);
+            animation: timeline-flow 2.8s linear infinite;
+        }
+
+        @keyframes timeline-flow {
+            from { background-position: 0 100%; }
+            to { background-position: 0 -120%; }
         }
 
         .card {
