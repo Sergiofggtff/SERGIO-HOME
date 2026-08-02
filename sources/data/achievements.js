@@ -5,28 +5,28 @@ export default
 [
     [
         'landingLeave',
-        'I’m going on an adventure!',
-        'Get out of the landing area.',
+        '出发探索',
+        '离开起点区域。',
         1
     ],
     [
         'areas',
-        'Traveler',
-        'Vist every area.',
+        '探索者',
+        '访问每一个区域。',
         13,
         true // Unique
     ],
     [
         'projects',
-        'But can you fix the wifi?',
-        'Check every project in the <strong>projects</strong> area.',
+        '产品故事',
+        '查看 <strong>Projects</strong> 区域里的每一个项目。',
         projectsData.length,
         true // Unique
     ],
     [
         'lab',
-        'I\'m a bit of a scientist myself',
-        'Check every project in the <strong>lab</strong> area.',
+        '技术底色',
+        '查看 <strong>Education</strong> 区域里的每一段教育经历。',
         labData.length,
         true // Unique
     ],

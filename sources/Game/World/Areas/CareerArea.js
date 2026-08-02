@@ -23,7 +23,6 @@ export class CareerArea extends Area
         this.setSounds()
         this.setLines()
         this.setYears()
-        this.setAchievement()
     }
 
     setSounds()
@@ -155,7 +154,7 @@ export class CareerArea extends Area
         this.year.originZ = this.year.group.position.z
         this.year.size = 17
         this.year.offsetTarget = 0
-        this.year.start = 2008
+        this.year.start = 2023
         this.year.current = this.year.start
 
         //    Digit indexes
@@ -257,14 +256,6 @@ export class CareerArea extends Area
         // this.game.scene.add(mesh)
     }
 
-    setAchievement()
-    {
-        this.events.on('boundingIn', () =>
-        {
-            this.game.achievements.setProgress('areas', 'career')
-        })
-    }
-
     update()
     {
         // Lines
@@ -278,7 +269,7 @@ export class CareerArea extends Area
                 if(!line.isIn)
                 {
                     line.isIn = true
-                    gsap.to(line.labelReveal, { value: 1, duration: 1, delay: 0.3, overwrite: true, ease: 'power2.inOut' })
+                    gsap.to(line.labelReveal, { value: 0, duration: 1, overwrite: true, ease: 'power2.inOut' })
                 }
             }
 

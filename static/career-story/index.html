@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sergio - Career Story</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap");
+
+        :root {
+            --gradient: radial-gradient(circle, #e5e5e5 0%, #fff 100%);
+            --white-50: #d9ecff;
+            --black-50: #1c1c21;
+            --black-100: #0e0e10;
+            --black-200: #282732;
+            --blue-50: #839cb5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100dvw;
+            margin: 0;
+            overflow-x: hidden;
+            background-color: black;
+            color: white;
+            scroll-behavior: smooth;
+            font-family: "Mona Sans", -apple-system, BlinkMacSystemFont, "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section-padding {
+            padding-left: 20px;
+            padding-right: 20px;
+            margin-top: 80px;
+            padding-bottom: 90px;
+        }
+
+        .back-home {
+            position: fixed;
+            top: 28px;
+            right: 28px;
+            z-index: 100;
+            text-decoration: none;
+            color: var(--white-50);
+            background: rgba(14, 14, 16, .82);
+            border: 1px solid var(--black-50);
+            border-radius: 12px;
+            padding: 12px 18px;
+            font-weight: 600;
+        }
+
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .relative { position: relative; }
+        .z-50 { z-index: 50; }
+        .z-20 { z-index: 20; }
+        .flex { display: flex; }
+        .items-start { align-items: flex-start; }
+        .items-center { align-items: center; }
+        .gap-1 { gap: 4px; }
+        .mb-5 { margin-bottom: 20px; }
+        .mt-32 { margin-top: 128px; }
+        .text-white-50 { color: var(--white-50); }
+        .text-lg { font-size: 18px; line-height: 28px; }
+        .text-3xl { font-size: 30px; line-height: 36px; }
+        .font-semibold { font-weight: 600; }
+        .italic { font-style: italic; }
+        .my-5 { margin-top: 20px; margin-bottom: 20px; }
+        .ms-5 { margin-inline-start: 20px; }
+        .mt-5 { margin-top: 20px; }
+        .list-disc { list-style-type: disc; }
+        .flex-col { flex-direction: column; }
+        .gap-5 { gap: 20px; }
+        .p-10 { padding: 40px; }
+        .rounded-xl { border-radius: 12px; }
+        .break-inside-avoid-column { break-inside: avoid-column; }
+        .size-5 { width: 20px; height: 20px; }
+
+        .hero-badge {
+            background: var(--black-200);
+            padding: 8px 16px;
+            border-radius: 999px;
+            width: fit-content;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+
+        .title-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .title-header h1 {
+            margin: 0;
+            font-size: 30px;
+            line-height: 36px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .card-border {
+            border: 1px solid var(--black-50);
+            background: var(--black-100);
+        }
+
+        .timeline-wrapper {
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline {
+            position: absolute;
+            z-index: 30;
+            height: 110%;
+            top: -40px;
+            width: 56px;
+            background: black;
+        }
+
+        .timeline-logo {
+            width: 40px;
+            height: 40px;
+            flex: none;
+            border-radius: 999px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid var(--black-50);
+            background: var(--black-100);
+            color: var(--white-50);
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .exp-card-wrapper {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .gradient-line {
+            width: 2px;
+            background: linear-gradient(
+                0deg,
+                rgba(69, 222, 196, 0) 0%,
+                #62e0ff 25%,
+                #52aeff 37.51%,
+                #fd5c79 62.83%,
+                #6d45ce 92.91%
+            );
+        }
+
+        .card {
+            --start: 0;
+            position: relative;
+            z-index: 40;
+            overflow: hidden;
+            transition: border-color 1s ease-in-out;
+        }
+
+        .card::before {
+            position: absolute;
+            content: "";
+            width: 100%;
+            height: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 12px;
+            border: 2px solid transparent;
+            background: var(--gradient);
+            background-attachment: fixed;
+            mask: linear-gradient(#0000, #0000),
+                conic-gradient(
+                    from calc((var(--start) - 15) * 1deg),
+                    #ffffff1f 0deg,
+                    white,
+                    #ffffff00 100deg
+                );
+            mask-composite: intersect;
+            mask-clip: padding-box, border-box;
+            opacity: 0;
+            transition: 0.5s ease;
+        }
+
+        .glow {
+            pointer-events: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(10px);
+            filter: saturate(200);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card > .glow {
+            position: absolute;
+            z-index: 0;
+        }
+
+        .card p {
+            margin: 0;
+        }
+
+        .timeline-card img:not(.size-5) {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .company-panel {
+            margin-top: 24px;
+            height: 220px;
+            overflow: visible;
+            background: transparent;
+        }
+
+        .company-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: left center;
+            mix-blend-mode: screen;
+            opacity: .92;
+            filter: saturate(1.08) contrast(1.02);
+        }
+
+        .experience-list {
+            position: relative;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .expText {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            z-index: 20;
+            will-change: opacity;
+        }
+
+        .expText h1,
+        .expText p {
+            margin-left: 0;
+        }
+
+        .expText ul {
+            padding-left: 22px;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-left: 40px;
+                padding-right: 40px;
+                margin-top: 160px;
+            }
+
+            .title-header h1 {
+                font-size: 48px;
+                line-height: 1;
+            }
+
+            .hero-badge {
+                font-size: 16px;
+            }
+
+            .timeline-wrapper {
+                left: 40px;
+            }
+
+            .timeline {
+                width: 112px;
+            }
+
+            .timeline-logo {
+                width: 80px;
+                height: 80px;
+                transform: translateY(-28px);
+            }
+
+            .expText {
+                gap: 40px;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .section-padding {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .page-inner {
+                padding-left: 80px;
+                padding-right: 80px;
+            }
+
+            .experience-list {
+                gap: 128px;
+            }
+
+            .exp-card-wrapper {
+                flex-direction: row;
+                gap: 80px;
+            }
+
+            .card-column {
+                width: 33.333333%;
+            }
+
+            .text-column {
+                width: 66.666667%;
+            }
+
+            .timeline-wrapper {
+                left: 35.5vw;
+            }
+
+            .expText {
+                gap: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a class="back-home" href="/">返回 Sergio's Home</a>
+
+    <section id="experience" class="flex-center section-padding">
+        <div class="w-full h-full page-inner">
+            <div class="title-header">
+                <div class="hero-badge">
+                    <p>💼 My Career Overview</p>
+                </div>
+                <div>
+                    <h1>Professional Work Experience</h1>
+                </div>
+            </div>
+            <div class="mt-32 relative">
+                <div class="experience-list">
+                    <div class="exp-card-wrapper">
+                        <div class="card-column">
+                            <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
+                                <div class="glow"></div>
+                                <div class="flex items-center gap-1 mb-5">
+                                    <img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5">
+                                </div>
+                                <div class="mb-5">
+                                    <p class="text-white-50 text-lg">一次技术实现与用户需求之间的 gap，让我开始从工程实现转向产品判断。</p>
+                                </div>
+                                <div><img src="./images/career-shokz.png" alt="健康硬件产品视觉"></div>
+                            </div>
+                        </div>
+                        <div class="text-column">
+                            <div class="flex items-start">
+                                <div class="timeline-wrapper"><div class="timeline"></div><div class="gradient-line w-1 h-full"></div></div>
+                                <div class="expText">
+                                    <div class="timeline-logo">韶音</div>
+                                    <div>
+                                        <h1 class="font-semibold text-3xl">韶音科技 · 硬件工程师</h1>
+                                        <p class="my-5 text-white-50">🗓️&nbsp;2023.10 - 2024.03</p>
+                                        <p class="italic" style="color:#839CB5">Responsibilities</p>
+                                        <ul class="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                            <li class="text-lg">基于大健康赛道布局，参与体成分分析仪的设计与实现，关注准确率、稳定性和用户可感知价值。</li>
+                                            <li class="text-lg">在真实项目中意识到，技术方案成立不代表用户需求被真正满足。</li>
+                                            <li class="text-lg">这段经历成为我产品经理路径的起点：从“把东西做出来”转向“为什么做、为谁做、如何产生商业价值”。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card-wrapper">
+                        <div class="card-column">
+                            <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
+                                <div class="glow"></div>
+                                <div class="flex items-center gap-1 mb-5">
+                                    <img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5">
+                                </div>
+                                <div class="mb-5">
+                                    <p class="text-white-50 text-lg">商业化不是简单加广告，而是在用户体验、广告主收益和平台收入之间做精细平衡。</p>
+                                </div>
+                                <div><img src="./images/career-baidu.png" alt="商业化策略产品视觉"></div>
+                            </div>
+                        </div>
+                        <div class="text-column">
+                            <div class="flex items-start">
+                                <div class="timeline-wrapper"><div class="timeline"></div><div class="gradient-line w-1 h-full"></div></div>
+                                <div class="expText">
+                                    <div class="timeline-logo">百度</div>
+                                    <div>
+                                        <h1 class="font-semibold text-3xl">百度 · 商业化策略产品经理</h1>
+                                        <p class="my-5 text-white-50">🗓️&nbsp;2025.03 - 2025.06</p>
+                                        <p class="italic" style="color:#839CB5">Responsibilities</p>
+                                        <ul class="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                            <li class="text-lg">负责手百信息流广告负反馈与频控策略优化，重构用户反馈链路。</li>
+                                            <li class="text-lg">建设分层频控策略，在降低打扰感的同时提升用户点击意愿。</li>
+                                            <li class="text-lg">建立商业化产品的底层判断：增长要理解用户、广告主和平台三方约束。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card-wrapper">
+                        <div class="card-column">
+                            <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
+                                <div class="glow"></div>
+                                <div class="flex items-center gap-1 mb-5">
+                                    <img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5">
+                                </div>
+                                <div class="mb-5">
+                                    <p class="text-white-50 text-lg">AI 产品不能只展示模型能力，它必须落到具体场景、具体入口和具体转化路径里。</p>
+                                </div>
+                                <div><img src="./images/career-jd-health.png" alt="AI 医疗电商产品视觉"></div>
+                            </div>
+                        </div>
+                        <div class="text-column">
+                            <div class="flex items-start">
+                                <div class="timeline-wrapper"><div class="timeline"></div><div class="gradient-line w-1 h-full"></div></div>
+                                <div class="expText">
+                                    <div class="timeline-logo">京东</div>
+                                    <div>
+                                        <h1 class="font-semibold text-3xl">京东健康 · AI 产品经理</h1>
+                                        <p class="my-5 text-white-50">🗓️&nbsp;2025.06 - 2025.10</p>
+                                        <p class="italic" style="color:#839CB5">Responsibilities</p>
+                                        <ul class="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                            <li class="text-lg">参与 AI 京医增长与转化优化，挖掘宠物误用药这一高频垂直场景。</li>
+                                            <li class="text-lg">推动宠物专科模型、问宠医入口、AI 轻咨询到电商下单的产品闭环设计。</li>
+                                            <li class="text-lg">把 AI 能力从“能回答”进一步推向“能解决问题并带来转化”。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card-wrapper">
+                        <div class="card-column">
+                            <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
+                                <div class="glow"></div>
+                                <div class="flex items-center gap-1 mb-5">
+                                    <img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5">
+                                </div>
+                                <div class="mb-5">
+                                    <p class="text-white-50 text-lg">好的增长机制，要让商户感受到确定性、可解释性和愿意继续投入的回报。</p>
+                                </div>
+                                <div><img src="./images/career-meituan.png" alt="广告增长产品视觉"></div>
+                            </div>
+                        </div>
+                        <div class="text-column">
+                            <div class="flex items-start">
+                                <div class="timeline-wrapper"><div class="timeline"></div><div class="gradient-line w-1 h-full"></div></div>
+                                <div class="expText">
+                                    <div class="timeline-logo">美团</div>
+                                    <div>
+                                        <h1 class="font-semibold text-3xl">美团 · 商业化产品经理</h1>
+                                        <p class="my-5 text-white-50">🗓️&nbsp;2025.10 - 2026.02</p>
+                                        <p class="italic" style="color:#839CB5">Responsibilities</p>
+                                        <ul class="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                            <li class="text-lg">负责点金与流量助手预算增长相关项目，围绕商户预算追加和广告增收设计策略。</li>
+                                            <li class="text-lg">设计智能追投、双出价机制、72h 自适应冷启动与转化扶持策略。</li>
+                                            <li class="text-lg">在广告收入、渗透率和商户 ROI 之间建立更可持续的增长路径。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card-wrapper">
+                        <div class="card-column">
+                            <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
+                                <div class="glow"></div>
+                                <div class="flex items-center gap-1 mb-5">
+                                    <img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5">
+                                </div>
+                                <div class="mb-5">
+                                    <p class="text-white-50 text-lg">AI Agent 的价值不止是对话体验，而是能否进入真实业务流程，支撑签约和续费。</p>
+                                </div>
+                                <div><img src="./images/career-tencent.png" alt="AI Agent 产品视觉"></div>
+                            </div>
+                        </div>
+                        <div class="text-column">
+                            <div class="flex items-start">
+                                <div class="timeline-wrapper"><div class="timeline"></div><div class="gradient-line w-1 h-full"></div></div>
+                                <div class="expText">
+                                    <div class="timeline-logo">腾讯</div>
+                                    <div>
+                                        <h1 class="font-semibold text-3xl">腾讯 · AI 产品经理</h1>
+                                        <p class="my-5 text-white-50">🗓️&nbsp;2026.05 - 至今</p>
+                                        <p class="italic" style="color:#839CB5">Responsibilities</p>
+                                        <ul class="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                            <li class="text-lg">负责健康药箱相关 AI Agent 产品方案，面向药企患者私域管理和对话式患者管理入口。</li>
+                                            <li class="text-lg">参与患者记忆系统、医疗安全评测与 Skill 化能力沉淀，推动能力从 demo 走向可交付。</li>
+                                            <li class="text-lg">围绕辉瑞企业版商业化签约与续费闭环，思考 AI Agent 如何从能力展示变成业务结果。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card-wrapper">
+                        <div class="card-column">
+                            <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
+                                <div class="glow"></div>
+                                <div class="flex items-center gap-1 mb-5">
+                                    <img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5"><img src="./images/star.png" alt="star" class="size-5">
+                                </div>
+                                <div class="mb-5">
+                                    <p class="text-white-50 text-lg">创业让我更早理解：产品、流量、销售和交付必须同时成立，商业闭环才是真的闭环。</p>
+                                </div>
+                                <div><img src="./images/career-linghang.png" alt="留学服务创业视觉"></div>
+                            </div>
+                        </div>
+                        <div class="text-column">
+                            <div class="flex items-start">
+                                <div class="timeline-wrapper"><div class="timeline"></div><div class="gradient-line w-1 h-full"></div></div>
+                                <div class="expText">
+                                    <div class="timeline-logo">领航</div>
+                                    <div>
+                                        <h1 class="font-semibold text-3xl">领航留学 · 联合创始人</h1>
+                                        <p class="my-5 text-white-50">🗓️&nbsp;2023.10 - 至今</p>
+                                        <p class="italic" style="color:#839CB5">Responsibilities</p>
+                                        <ul class="list-disc ms-5 mt-5 flex flex-col gap-5 text-white-50">
+                                            <li class="text-lg">从 0-1 搭建校内留学服务业务，把内容获客、咨询转化、服务交付和复购推荐串成完整闭环。</li>
+                                            <li class="text-lg">通过小红书内容矩阵、校方宣讲、分层服务方案与销售流程实现高客单价转化。</li>
+                                            <li class="text-lg">线上积累 3000+ 垂直粉丝，总收入突破六位数，完成从需求发现到商业结果的完整验证。</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="./main.js"></script>
+    <script>
+        document.querySelectorAll('.timeline-card').forEach((card) => {
+            const updateGlow = (event) => {
+                const rect = card.getBoundingClientRect()
+                const mouseX = event.clientX - rect.left - rect.width / 2
+                const mouseY = event.clientY - rect.top - rect.height / 2
+                let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI)
+                angle = (angle + 360) % 360
+                card.style.setProperty('--start', angle + 60)
+            }
+            card.addEventListener('mousemove', updateGlow)
+        })
+
+        if (window.location.protocol === 'file:') {
+            document.querySelectorAll('.timeline').forEach((timeline) => {
+                timeline.style.display = 'none'
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,82 +1,40 @@
 import * as THREE from 'three/webgpu'
 
 const text = `
-██████╗ ██████╗ ██╗   ██╗███╗   ██╗ ██████╗ ██╗███████╗                   
-██╔══██╗██╔══██╗██║   ██║████╗  ██║██╔═══██╗╚═╝██╔════╝                   
-██████╔╝██████╔╝██║   ██║██╔██╗ ██║██║   ██║   ███████╗                   
-██╔══██╗██╔══██╗██║   ██║██║╚██╗██║██║   ██║   ╚════██║                   
-██████╔╝██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝   ███████║                   
-╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝    ╚══════╝                   
-                                                                       
-██████╗  ██████╗ ██████╗ ████████╗███████╗ ██████╗ ██╗     ██╗ ██████╗ 
-██╔══██╗██╔═══██╗██╔══██╗╚══██╔══╝██╔════╝██╔═══██╗██║     ██║██╔═══██╗
-██████╔╝██║   ██║██████╔╝   ██║   █████╗  ██║   ██║██║     ██║██║   ██║
-██╔═══╝ ██║   ██║██╔══██╗   ██║   ██╔══╝  ██║   ██║██║     ██║██║   ██║
-██║     ╚██████╔╝██║  ██║   ██║   ██║     ╚██████╔╝███████╗██║╚██████╔╝
-╚═╝      ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝ 
+███████╗███████╗██████╗  ██████╗ ██╗ ██████╗ 
+██╔════╝██╔════╝██╔══██╗██╔════╝ ██║██╔═══██╗
+███████╗█████╗  ██████╔╝██║  ███╗██║██║   ██║
+╚════██║██╔══╝  ██╔══██╗██║   ██║██║██║   ██║
+███████║███████╗██║  ██║╚██████╔╝██║╚██████╔╝
+╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝ ╚═════╝ 
 
 ╔═ Intro ═══════════════╗
-║ Thank you for visiting my portfolio, you sneaky developer!
-║ If you are curious about the stack and how I built this project, here’s everything you need to know.
+║ 欢迎来到 Sergio's Home。
+║ 既然你打开了控制台，说明你也是个好奇的人。
+║ 这里记录我的 AI 产品、商业化增长、创业项目和一点点折腾精神。
+║ 谢谢你来翻我的控制台，隐藏入口被你发现了。
 ╚═══════════════════════╝
 
-╔═ Socials ═══════════════╗
-║ Mail           ⇒ simon.bruno.77@gmail.com
-║ X              ⇒ https://x.com/bruno_simon
-║ BlueSKy        ⇒ https://bsky.app/profile/bruno-simon.bsky.social
-║ Discord public ⇒ https://discord.com/channels/769928116701233152/1445064878384480288
-║ Discord PM     ⇒ https://discord.com/users/202907325722263553
-║ Youtube        ⇒ https://www.youtube.com/@BrunoSimon
-║ Twitch         ⇒ https://www.twitch.tv/bruno_simon_dev
-║ GitHub         ⇒ https://github.com/brunosimon
-║ LinkedIn       ⇒ https://www.linkedin.com/in/simonbruno77/
-╚═══════════════════════╝
-
-╔═ Debug ═══════════════╗
-║ You can access the debug mode by adding #debug at the end of the URL and reloading.
-║ Press [V] to toggle the free camera.
+╔═ Contact ═════════════╗
+║ Mail   ⇒ 2281830298@qq.com
+║ GitHub ⇒ https://github.com/Sergiofggtff
 ╚═══════════════════════╝
 
 ╔═ Three.js ════════════╗
-║ Three.js is the library I’m using to render this 3D world (release: ${THREE.REVISION})
+║ This 3D world is rendered with Three.js (release: ${THREE.REVISION})
 ║ https://threejs.org/
-║ It was created by mr.doob (https://x.com/mrdoob, https://github.com/mrdoob),
-║ followed by hundreds of awesome developers,
-║ one of which being Sunag (https://x.com/sea3dformat, https://github.com/sunag) who added TSL,
-║ enabling the use of both WebGL and WebGPU, making this portfolio possible.
-╚═══════════════════════╝
-
-╔═ Three.js Journey ════╗
-║ If you want to learn Three.js, I got you covered with this huge course.
-║ https://threejs-journey.com/
-║ It contains everything you need to start building awesome stuff with Three.js (and much more).
-╚═══════════════════════╝
-
-╔═ Devlogs ═════════════╗
-║ I’ve been making devlogs since the very start of this portfolio
-║ and you can find them all on my Youtube channel.
-║ https://www.youtube.com/@BrunoSimon
+║ The original portfolio was created by Bruno Simon and the Three.js community.
 ╚═══════════════════════╝
 
 ╔═ Source code ═════════╗
-║ The code is available on GitHub under MIT license. Even the Blender files are there, so have fun!
-║ https://github.com/brunosimon/folio-2025
-║ For security reasons, I’m not sharing the server code, but the portfolio works without it.
+║ Based on Bruno Simon Folio 2025, customized for Sergio's personal site.
+║ Original project: https://github.com/brunosimon/folio-2025
 ╚═══════════════════════╝
 
 ╔═ Musics ══════════════╗
-║ The music you hear was made especially for this portfolio by the awesome Kounine (Linktree).
+║ The original music was made for Bruno Simon Folio 2025 by Kounine.
 ║ https://linktr.ee/Kounine
-║ They are now under CC0 license, meaning you can do whatever you want with them!
-║ Download them here.
-║ https://github.com/brunosimon/folio-2025/tree/main/static/sounds/musics
-╚═══════════════════════╝
-
-╔═ Some more links ═════╗
-║ Rapier (Physics library)  ⇒ https://rapier.rs/
-║ Howler.js (Audio library) ⇒ https://howlerjs.com/
-║ Amatic SC (Fonts)         ⇒ https://fonts.google.com/specimen/Amatic+SC
-║ Nunito (Fonts).           ⇒ https://fonts.google.com/specimen/Nunito?query=Nunito
+║ The music is under CC0 license.
 ╚═══════════════════════╝
 `
 let finalText = ''

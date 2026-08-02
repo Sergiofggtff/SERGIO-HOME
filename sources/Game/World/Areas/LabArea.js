@@ -27,7 +27,7 @@ export class LabArea extends Area
         if(this.game.debug.active)
         {
             this.debugPanel = this.game.debug.panel.addFolder({
-                title: '🧪 Lab',
+                title: '🎓 Education',
                 expanded: false,
             })
         }
@@ -90,7 +90,7 @@ export class LabArea extends Area
     {
         this.interactivePoint = this.game.interactivePoints.create(
             this.references.items.get('interactivePoint')[0].position,
-            'Lab',
+            'Education',
             InteractivePoints.ALIGN_RIGHT,
             InteractivePoints.STATE_CONCEALED,
             () =>
@@ -465,7 +465,9 @@ export class LabArea extends Area
                 resource = {}
                 resource.loaded = false
 
-                const loader = this.game.resourcesLoader.getLoader('textureKtx')
+                const isKtx = key.endsWith('.ktx')
+                const loaderType = isKtx ? 'textureKtx' : 'texture'
+                const loader = this.game.resourcesLoader.getLoader(loaderType)
 
                 loader.load(
                     path,
@@ -473,7 +475,7 @@ export class LabArea extends Area
                     {
                         resource.texture = loadedTexture
                         resource.colorSpace = THREE.SRGBColorSpace
-                        resource.flipY = false
+                        resource.flipY = isKtx ? false : true
                         resource.magFilter = THREE.LinearFilter
                         resource.minFilter = THREE.LinearFilter
                         resource.generateMipmaps = false
@@ -838,7 +840,9 @@ export class LabArea extends Area
                         if(mini.startedLoading)
                             return
 
-                        const loader = this.game.resourcesLoader.getLoader('textureKtx')
+                        const isKtx = project.imageMini.endsWith('.ktx')
+                        const loaderType = isKtx ? 'textureKtx' : 'texture'
+                        const loader = this.game.resourcesLoader.getLoader(loaderType)
 
                         loader.load(
                             `lab/images/${project.imageMini}`,
@@ -849,7 +853,7 @@ export class LabArea extends Area
                                 gsap.to(alpha, { value: 1, duration: 1, overwrite: true })
 
                                 loadedTexture.colorSpace = THREE.SRGBColorSpace
-                                loadedTexture.flipY = false
+                                loadedTexture.flipY = isKtx ? false : true
                                 loadedTexture.magFilter = THREE.LinearFilter
                                 loadedTexture.minFilter = THREE.LinearFilter
                                 loadedTexture.generateMipmaps = false
