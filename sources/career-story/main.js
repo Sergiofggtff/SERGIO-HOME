@@ -18,16 +18,16 @@ gsap.utils.toArray('.timeline-card').forEach((card) =>
     })
 })
 
-gsap.to('.timeline', {
+gsap.to('.gradient-line', {
     transformOrigin: 'bottom bottom',
     ease: 'power1.inOut',
     scrollTrigger: {
-        trigger: '.timeline',
+        trigger: '.gradient-line',
         start: 'top center',
         end: '70% center',
         onUpdate: (self) =>
         {
-            gsap.to('.timeline', {
+            gsap.to('.gradient-line', {
                 scaleY: 1 - self.progress,
             })
         },
