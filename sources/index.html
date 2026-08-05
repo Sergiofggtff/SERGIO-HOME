@@ -40,6 +40,17 @@
     <link rel="preload" href="/behindTheScene/stars.ktx" as="fetch" crossorigin>
     <link rel="preload" href="/intro/sound.ktx" as="fetch" crossorigin>
     <link rel="preload" href="/palette.ktx" as="fetch" crossorigin>
+    <script>
+        (() => {
+            const params = new URLSearchParams(window.location.search)
+            const isNoJd = window.location.hostname === 'sergio-home.vercel.app' || params.get('variant') === 'no-jd'
+            document.documentElement.classList.toggle('variant-no-jd', isNoJd)
+        })()
+    </script>
+    <style>
+        .variant-no-jd [data-site-variant="full"] { display: none !important; }
+        html:not(.variant-no-jd) [data-site-variant="no-jd"] { display: none !important; }
+    </style>
     
     <!-- Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMSN30BQ5J"></script>
@@ -227,7 +238,8 @@
                                 <div class="title">欢迎来到 Sergio's Home</div>
                                 <p class="text">我的名字是<strong>熊谢熙</strong>，也可以叫我 <strong>Sergio</strong>。</p>
                                 <p class="text">我是一名擅长在任何业务场景通过 <strong>AI</strong>、产品策略等手段追求商业化的产品经理。</p>
-                                <p class="text">我关注 AI Agent、电商广告、商业化增长与 0-1 产品闭环，曾在腾讯、美团、京东、百度等团队参与 AI 产品与商业化策略项目，也在校内联合创办留学服务项目。</p>
+                                <p class="text" data-site-variant="full">我关注 AI Agent、电商广告、商业化增长与 0-1 产品闭环，曾在腾讯、美团、京东、百度等团队参与 AI 产品与商业化策略项目，也在校内联合创办留学服务项目。</p>
+                                <p class="text" data-site-variant="no-jd">我关注 AI Agent、电商广告、商业化增长与 0-1 产品闭环，曾在腾讯、美团、百度等团队参与 AI 产品与商业化策略项目，也在校内联合创办留学服务项目。</p>
                                 <p class="text">开车探索我的 AI 产品经历、商业化项目、创业实践和个人实验。</p>
                                 <p class="text">完整工作履历可以从地图上的 Career Story 节点进入 <a href="/career-story/" target="_blank" rel="noreferrer">Time Machine</a> 查看。</p>
                                 <p class="text">也可以去 Projects 看一些我用 vibe coding 做出来的产品原型和小作品。</p>

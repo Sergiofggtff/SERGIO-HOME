@@ -36,6 +36,10 @@
             display: block;
         }
 
+        .variant-no-jd [data-site-variant="jd"] {
+            display: none !important;
+        }
+
         .flex-center {
             display: flex;
             justify-content: center;
@@ -355,6 +359,13 @@
             }
         }
     </style>
+    <script>
+        (() => {
+            const params = new URLSearchParams(window.location.search)
+            const isNoJd = window.location.hostname === 'sergio-home.vercel.app' || params.get('variant') === 'no-jd'
+            document.documentElement.classList.toggle('variant-no-jd', isNoJd)
+        })()
+    </script>
 </head>
 <body>
     <a class="back-home" href="/">返回 Sergio's Home</a>
@@ -437,7 +448,7 @@
                         </div>
                     </div>
 
-                    <div class="exp-card-wrapper">
+                    <div class="exp-card-wrapper" data-site-variant="jd">
                         <div class="card-column">
                             <div class="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column">
                                 <div class="glow"></div>
